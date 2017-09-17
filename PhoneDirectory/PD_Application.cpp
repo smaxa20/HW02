@@ -7,7 +7,6 @@
 #include <limits>
 using namespace std;
 
-
 // Forward declaration of functions
 void process_commands(Phone_Directory&);
 void do_add_change_entry(Phone_Directory&);

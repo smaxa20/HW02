@@ -1,6 +1,7 @@
 #ifndef ARRAY_BASED_PD_H_
 #define ARRAY_BASED_PD_H_
 #include <string>
+using namespace std;
 
 /** Specification file for the array-based phone directory.
  */
@@ -20,7 +21,7 @@ public:
 		@param source_name The name of the file (data source)
 		with the phone directory entries.
 		*/
-	void load_data(const std::string& source_name);
+	void load_data(const string& source_name);
 
 	/** Look up an entry.
 		@param name The name of the person to look up
@@ -28,7 +29,7 @@ public:
 		or an empty string if name is not in
 		the directory
 		*/
-	std::string lookup_entry(const std::string& name) const;
+	string lookup_entry(const string& name) const;
 
 	/** Changes the number associated with the given name to
 		the new value, or adds a new entry with this name and
@@ -38,38 +39,42 @@ public:
 		@return The old value of number or an empty string
 		if this is a new entry
 		*/
-	std::string add_or_change_entry(const std::string& name,
-		const std::string& number);
+	string add_or_change_entry(const string& name,
+		const string& number);
 
 	/** Removes the entry with the specified name from the directory.
 		@param name The name of the person
 		@return The person's name or an empty string if not in
 		the directory
 		*/
-	std::string remove_entry(const std::string& name);
+	string remove_entry(const string& name);
 
 	/** Writes the contents of the directory to the data file.
 	 */
 	void save();
 
 private:
-	class Directory_Entry
+	class Directory_Entry			// Scott Maxa
 	{
+	private:
+		string name;
+		string number;
 	public:
 		Directory_Entry() {} // Default no-argument constructor 
-		Directory_Entry(std::string the_name, std::string the_number) {
-			// constructor not implemented yet
+		Directory_Entry(string the_name, string the_number) {
+			name = the_name;
+			number = the_number;
 		}
-		std::string get_name() const {
-			return ""; // method not implemented yet
+		string get_name() const {
+			return name; 
 		}
-		std::string get_number() const {
-			return ""; // method not implemented yet
+		string get_number() const {
+			return number; 
 		}
-		void set_number(const std::string& new_number) {
-			// method not implemented yet
+		void set_number(const string& new_number) {
+			number = new_number;
 		}
-	private:
+	
 
 	};
 	
@@ -80,14 +85,14 @@ private:
 		@return The index of the entry containing the name, or size
 		if the name is not found
 		*/
-	int find(const std::string& name) const;
+	int find(const string& name) const;
 
 	/** Adds a new entry with the given name and number to the array
 		of directory entries.
 		@param name The name to be added
 		@param number The number to be added
 		*/
-	void add(const std::string& name, const std::string& number);
+	void add(const string& name, const string& number);
 
 	/** Removes the entry at the given index.
 		@param index The index of the entry to be removed
@@ -106,7 +111,7 @@ private:
 	/** Pointer to the array containing the directory data. */
 	Directory_Entry* the_directory;
 	/** The name of the data file that contains the directory data. */
-	std::string source_name;
+	string source_name;
 	/** Boolean flag to indicate whether the directory was
 		modified since it was either loaded or saved. */
 	bool modified;
