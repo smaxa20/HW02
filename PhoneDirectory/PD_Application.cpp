@@ -90,7 +90,14 @@ void do_remove_entry(Phone_Directory& the_directory) // Exercise 1.8: please com
 	string name;							// Scott Maxa
 	cout << "Enter name: ";
 	getline(cin, name);
-	the_directory.remove_entry(name);
+	string removal = the_directory.remove_entry(name);
+
+	if (removal != "") { //Chad Ross
+		cout << name << " removed. ( Number: " << removal << ") " << endl;
+	}
+	else {
+		cout << "Name could not be found" << endl;
+	}
 }
 
 void do_save(Phone_Directory& the_directory)

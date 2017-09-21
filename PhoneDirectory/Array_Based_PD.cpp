@@ -115,19 +115,22 @@ void Phone_Directory::save()
 	*/
 string Phone_Directory::remove_entry(const string& name) // Exercise 1.7: please complete the remove_entry() method - Ed/Kent
 {
-	int index = find(name);			// Chad Ross
+	int index = find(name);
 	
-	for (int i = index; i < size - 1; i++)
+	if (find(name) != -1)	// Chad Ross
 	{
-		the_directory[i] = the_directory[i + 1];
+		//string number = the_directory[find(name)].get_number();
 
-		if (the_directory[i].get_name() == name) {
-			
-			return the_directory[i].get_number();
+		for (int i = index; i < size - 1; i++)
+		{
+			the_directory[i] = the_directory[i + 1];
 		}
+		reallocate();
+
+		return the_directory[index].get_number();
 	}
-	
-	return "";
+	else
+		return "";
 }
 
 // Private method implementation

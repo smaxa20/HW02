@@ -75,7 +75,6 @@ private:
 			number = new_number;
 		}
 	
-
 	};
 	
 
